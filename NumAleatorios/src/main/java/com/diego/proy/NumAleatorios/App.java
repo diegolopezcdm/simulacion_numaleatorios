@@ -92,9 +92,43 @@ public class App
         System.out.println("===================================================");
         System.out.println("PRUEBAS DE ALEATORIEDAD");
         
+        int numRachas=0;
+        boolean mayorMediaFlag = false;
+        
+        for (int i = 0; i < lookUpTable.size(); i++) {
+			
+        	if (i==0){
+        		
+        		mayorMediaFlag = actualizarFlag(lookUpTable, i);
+        		numRachas++;
+        		
+        	}else {
+        		
+        		if(lookUpTable.get(i)>0.50 && !mayorMediaFlag){
+        			//numRachas++;
+        		} if(lookUpTable.get(i)<0.50 && !mayorMediaFlag){
+        			//numRachas++;
+        		} else {
+        			mayorMediaFlag = actualizarFlag(lookUpTable, i);
+				}
+				
+			}
+        	
+		}
+        
         System.out.println();
         System.out.println();
         System.out.println("Developer: u201321275 Juan Diego Lopez Flores");
         System.out.println("Derechos Reservados - CopyRight");
     }
+
+	private static boolean actualizarFlag(List<Float> lookUpTable, int i) {
+		boolean mayorMediaFlag;
+		if(lookUpTable.get(i)>0.50){
+			mayorMediaFlag=false;
+		} else {
+			mayorMediaFlag=true;
+		}
+		return mayorMediaFlag;
+	}
 }
