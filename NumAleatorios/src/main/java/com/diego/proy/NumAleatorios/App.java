@@ -178,6 +178,7 @@ public class App {
 		System.out.println("PRUEBAS DE ALEATORIEDAD");
 		System.out
 				.println("===================================================");
+		System.out.println("MEDIANTE PRUEBAS RACHAS O DE CORRIDAS ARRIBA Y ABAJO");
 		System.out
 				.println("determinemos si el siguiente conjunto de números ri tiene valor esperado de 0,5 con un nivel de aceptación de 95%");
 		System.out.println();
