@@ -189,31 +189,34 @@ public class App {
 
 		int c0 = 0;
 		int n = numerosAleatorios.size();
-		boolean mayorMediaFlag = false;
+		boolean mayorFlag = false;
 		float Uc0 = (2 * (n) - 1) / 3;
 		float o2co = (16 * (n) - 19);
 		o2co = o2co / 90;
 
 		for (int i = 0; i < numerosAleatorios.size(); i++) {
-
-			if (i == 0) {
-				mayorMediaFlag = actualizarFlag(numerosAleatorios, i);
-				imprimirFlag(mayorMediaFlag);
+			
+			if(i==0){
+				mayorFlag = actualizarFlag(numerosAleatorios, i);
+				imprimirFlag(mayorFlag);
 				c0++;
-			} else if (i == numerosAleatorios.size()) {
+			} else if(i==numerosAleatorios.size()-1){
 				break;
 			} else {
-
-				if (numerosAleatorios.get(i) > 0.50 && mayorMediaFlag) {
+				
+				float numeroAleatorioActual = numerosAleatorios.get(i);
+				float numeroAleatorioSiguiente = numerosAleatorios.get(i+1);
+				
+				if(numeroAleatorioSiguiente>numeroAleatorioActual && mayorFlag){
 					System.out.print(1);
-				} else if (numerosAleatorios.get(i) < 0.50 && !mayorMediaFlag) {
+				} else if(numeroAleatorioSiguiente<numeroAleatorioActual && !mayorFlag){
 					System.out.print(0);
 				} else {
-					mayorMediaFlag = actualizarFlag(numerosAleatorios, i);
-					imprimirFlag(mayorMediaFlag);
+					mayorFlag = actualizarFlag(numerosAleatorios, i);
+					imprimirFlag(mayorFlag);
 					c0++;
 				}
-
+				
 			}
 
 		}
@@ -251,12 +254,12 @@ public class App {
 	}
 
 	private boolean actualizarFlag(List<Float> lookUpTable, int i) {
-		boolean mayorMediaFlag;
-		if (lookUpTable.get(i) > 0.50) {
-			mayorMediaFlag = true;
+		boolean mayorFlag;
+		if (lookUpTable.get(i) < (lookUpTable.get(i+1))) {
+			mayorFlag = true;
 		} else {
-			mayorMediaFlag = false;
+			mayorFlag = false;
 		}
-		return mayorMediaFlag;
+		return mayorFlag;
 	}
 }
